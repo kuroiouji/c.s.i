@@ -1,0 +1,32 @@
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#btn1").click(function(){
+            var idx = $("#txt1").val();
+            /* $.get("/Master/GetMovieSetting?idx="+idx,function(data){
+                console.log(data);
+                $(".res").html(JSON.stringify(data))
+            }); */
+
+            /* $.post("/Master/GetMovieSetting",JSON.stringify({idx:idx}),function(data){
+                console.log(data);
+                $(".res").html(JSON.stringify(data))
+            }); */
+            $.ajax({
+                type:"post",
+                url:"/Master/GetMovieSetting",
+                data:JSON.stringify({idx:idx}),
+                contentType:"application/json; charset=UTF-8",
+                dataType:"json",
+                success:function(data){
+                    $(".res").html(JSON.stringify(data))
+                }
+            });
+        });
+        
+    });
+</script>
+<p>Movie Setting index</p>
+<input id="txt1" type="text"><button id="btn1">Click</button>
+<p class="res"></p>

@@ -19,12 +19,12 @@ export class UserDetailComponent implements OnInit {
   ) {
     this.ctrlMgr = new CtmControlManagement(
       fb.group({
-          "UserName": [{ value: null, disabled: false }],
-          "PassWord": [{ value: null, disabled: false }],
-          "GroupID": [{ value: null, disabled: false }],
-          "FlagActive": [{ value: null, disabled: false }],
-          "FirstName": [{ value: null, disabled: false }],
-          "LastName": [{ value: null, disabled: false }],
+          "UserName": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
+          "PassWord": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
+          "GroupID": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
+          "FlagActive": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
+          "FirstName": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
+          "LastName": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
           "Gender": [{ value: null, disabled: false }],
           "NickName": [{ value: null, disabled: false }],
           "CitizenID": [{ value: null, disabled: false }],
@@ -37,6 +37,11 @@ export class UserDetailComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  private onSubmit() {
+    console.log("Submit");
+    console.log(this.ctrlMgr.validate());
   }
 
 }

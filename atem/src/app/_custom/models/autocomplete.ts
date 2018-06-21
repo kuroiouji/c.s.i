@@ -11,5 +11,13 @@ export const AUTOCOMPLETE_CACHE = {
         },
         display: "NameEN",
         value:"ConstantValue"
+    },
+    "GENDER":{
+        url: "/api/Common/GetConstantAutoComplete",
+        data:{
+            ConstantCode: "GENDER"
+        },
+        display: "NameEN",
+        value:"ConstantValue"
     }
 };

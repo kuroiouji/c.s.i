@@ -5,7 +5,7 @@ export const AUTOCOMPLETE_CACHE = {
         value: "GroupID"
     },
     "ACTIVE_STATUS":{
-        url: "/api/Common/GetConstantAutoComplete",
+        url: "api/Common/GetConstantAutoComplete",
         data:{
             ConstantCode: "ACTIVE_STATUS"
         },
@@ -13,7 +13,7 @@ export const AUTOCOMPLETE_CACHE = {
         value:"ConstantValue"
     },
     "GENDER":{
-        url: "/api/Common/GetConstantAutoComplete",
+        url: "api/Common/GetConstantAutoComplete",
         data:{
             ConstantCode: "GENDER"
         },

@@ -22,7 +22,7 @@ export class UserDetailComponent implements OnInit {
           "UserName": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
           "PassWord": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
           "GroupID": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
-          "FlagActive": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
+          "FlagActive": [{ value: true, disabled: false }, Validators.compose([Validators.required])],
           "FirstName": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
           "LastName": [{ value: null, disabled: false }, Validators.compose([Validators.required])],
           "Gender": [{ value: null, disabled: false }],
@@ -40,7 +40,19 @@ export class UserDetailComponent implements OnInit {
   }
 
   private onSubmit() {
-    this.ctrlMgr.validate();
+    if(this.ctrlMgr.validate()){
+      let data = this.ctrlMgr.data;
+      this.api.callApiController("api/SCS021/CreateUser", {
+        type: "POST",
+        anonymous: true,
+        data: data
+      }).then((res) => {
+        if (res != undefined) {
+          console.log(res);
+        }
+      });
+    }
+    
   }
 
 }

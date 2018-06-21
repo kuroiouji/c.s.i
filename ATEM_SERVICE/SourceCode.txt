@@ -1,0 +1,4 @@
+IF exists (SELECT 1 FROM [dbo].[tbt_OrderPromotion] WHERE OrderID = @OrderID) 
+BEGIN
+	SET @ErrorCode = 'CLE100'
+END

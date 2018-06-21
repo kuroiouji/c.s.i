@@ -1,0 +1,49 @@
+<div style="margin: 6px 24px">
+    <div style="margin-bottom: 6px;">
+      <div class="grid" [formGroup]="ctrlMgr.form">
+        <ctm-textbox subject="UserName" 
+          formControlName="UserName"></ctm-textbox>
+        <ctm-autocomplete subject="Group" class="group" 
+          formControlName="GroupID"
+          key="GROUP"></ctm-autocomplete>
+        <ctm-autocomplete subject="Status" class="status" 
+          formControlName="FlagActive"
+          key="ACTIVE_STATUS"></ctm-autocomplete>
+      </div>
+    </div>
+    <div style="margin-bottom: 6px;">
+        <div class="grid">
+          <button class="btn btn-information" (click)="onSearch()">Search</button>
+          <button class="btn btn-warning" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+</div>
+
+<div>
+  <table class="table" border="1">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Group Name</th>
+        <th>Name</th>
+        <th>Nick Name</th>
+        <th>Last Login Date</th>
+        <th>Flag Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of list;let i = index">
+        <td class="text-center">{{i+1}}</td>
+        <td>{{row.GroupNameEN}}</td>
+        <td>{{row.Name}}</td>
+        <td>{{row.NickName}}</td>
+        <td>{{ dateText(row.LastLoginDate) }}</td>
+        <td class="text-center">
+          <span ng-if="row.FlagActive == true" class="active">
+            <i class="fas fa-check"></i>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

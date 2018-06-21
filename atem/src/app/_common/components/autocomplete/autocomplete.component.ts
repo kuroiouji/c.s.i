@@ -524,7 +524,8 @@ export class CtmAutocompleteComponent implements OnInit, ControlValueAccessor {
           acache["cache"].push(cache);
   
           this.api.callApiController(acache["url"], {
-            type: "POST"
+            type: "POST",
+            data: acache["data"]
           }).then((res) => {
             if (res != undefined) {
               cache["data"] = res;

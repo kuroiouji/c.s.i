@@ -1,0 +1,13 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 6px;
+}
+
+.active{
+    color: green;
+}
+
+.text-center{
+    text-align: center;
+}

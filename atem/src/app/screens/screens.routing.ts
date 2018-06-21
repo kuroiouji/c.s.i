@@ -9,7 +9,13 @@ export const routes: Routes = [
 	{
 		path: "",
         component: ScreensComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard ],
+        children:[
+            {
+                path: 'u',
+                loadChildren: './security/user/user.module#UserModule' 
+            }
+        ]
     }
 ]
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

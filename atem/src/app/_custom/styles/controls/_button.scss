@@ -1,0 +1,63 @@
+@import "../variables";
+
+@mixin btn-generater($type) {
+    background: map-get($backgrounds, $type);
+    border-bottom-color: map-get($borders, $type);
+    color: #fff;
+
+    &:hover {
+        background: darken(map-get($backgrounds, $type), 2%);
+        border-bottom-color: darken(map-get($borders, $type), 2%);
+        box-shadow: 0 0 3px darken(map-get($borders, $type), 3%);
+    }
+    &:focus {
+        background: darken(map-get($backgrounds, $type), 1%);
+        border-bottom-color: darken(map-get($borders, $type), 1%);
+        box-shadow: 0 0 3px darken(map-get($borders, $type), 3%); 
+    }
+}
+
+.btn {
+    position: relative;
+    vertical-align: top;
+    height: 32px;
+    padding: 6px 12px;
+    color: $font-color;
+    text-align: center;
+    
+    background: map-get($backgrounds, default);
+    border: 0;
+    border-bottom: 2px solid map-get($borders, default);
+    
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+
+    &:hover {
+        background: darken(map-get($backgrounds, default), 2%);
+        border-bottom-color: darken(map-get($borders, default), 2%);
+        box-shadow: 0 0 3px darken(map-get($borders, default), 3%);
+    }
+    &:focus {
+        background: darken(map-get($backgrounds, default), 1%);
+        border-bottom-color: darken(map-get($borders, default), 1%);
+        box-shadow: 0 0 3px darken(map-get($borders, default), 3%); 
+    }
+    &:active {
+        top: 1px;
+    }
+
+    & + .btn {
+        margin-left: 6px;
+    }
+
+    &.btn-error {
+        @include btn-generater(error);
+    }
+    &.btn-information {
+        @include btn-generater(information);
+    }
+    &.btn-warning {
+        @include btn-generater(warning);
+    }
+}

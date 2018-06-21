@@ -1,0 +1,81 @@
+.txt {
+    .control {
+        .btn-autocomplete {
+            position: relative;
+            vertical-align: top;
+            width: 27px;
+            height: 27px;
+            padding: 6px;
+            color: $font-color;
+            text-align: center;
+            
+            background: map-get($backgrounds, default);
+            border: 0;
+            
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+        }
+    }
+}
+.autocomplete-contents {
+    @include scrollbars(6px, #b0b0b0, #e6e6e6);
+        
+    .autocomplete {
+        opacity: 0;
+        position: absolute;
+        
+        background: #fff;
+        background-clip: padding-box;
+        border: solid 1px map-get($borders, default);
+        max-height: 240px;
+        overflow-y: auto;
+        
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .item {
+            padding: 6px 12px;
+            width: 100%;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+
+            .highlight {
+                color: #F0A83F;
+            }
+
+            &:hover {
+                background-color: lighten(map-get($backgrounds, confirm), 30%);
+            }
+            &.selected {
+                background-color: lighten(map-get($backgrounds, confirm), 10%);
+                color: #fff;
+
+                .highlight {
+                    color: #fff;
+                }
+            }
+            
+            & + .item {
+                border-top: solid 1px map-get($borders, default);
+            }
+        }
+
+        &.show {
+            opacity: 1;
+            @include animation(autocomplete-show 0.3s linear);
+        }
+    }
+}
+@keyframes autocomplete-show {
+    0% { 
+        opacity: 0;
+    }
+    100% { 
+        opacity: 1;
+    }
+}

@@ -1,0 +1,150 @@
+.msg-dialog {
+    .dialog-ovelay {
+        z-index: 9900;
+    }
+    .dialog-box {
+        z-index: 9901;
+
+        .dialog-body {
+            .dialog-content {
+                padding-left: 42px;
+
+                .msg-icon {
+                    position: absolute;
+                    top: 6px;
+                    left: 6px;
+                }
+
+                p {
+                    padding: 6px 0;
+                    margin:0;
+                }
+            }
+        }
+        .dialog-command {
+            .btn {
+                min-width: 80px;
+                background-color: transparent;
+                border-color: transparent;
+            }
+        }
+    }
+
+    &.error {
+        .dialog-box {
+            border: solid 1px map-get($borders, error);
+            box-shadow: 0 0 6px map-get($borders, error); 
+
+            .dialog-body {
+                .dialog-content {
+                    .msg-icon {
+                        color: map-get($colors, error) !important;
+                    }
+                }
+            }
+            .dialog-command {
+                .btn {
+                    &.btn-default {
+                        background-color: map-get($backgrounds, error);
+                        border-bottom-color: map-get($borders, error);
+                        color: #fff;
+
+                        &:hover {
+                            background: darken(map-get($backgrounds, error), 2%);
+                            border-bottom-color: darken(map-get($borders, error), 2%);
+                            box-shadow: 0 0 3px darken(map-get($borders, error), 3%);
+                        }
+                        &:focus {
+                            background: darken(map-get($backgrounds, error), 1%);
+                            border-bottom-color: darken(map-get($borders, error), 1%);
+                            box-shadow: 0 0 3px darken(map-get($borders, error), 3%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.information,
+    &.question {
+        .dialog-box {
+            border: solid 1px map-get($borders, information);
+            box-shadow: 0 0 6px map-get($borders, information); 
+
+            .dialog-body {
+                .dialog-content {
+                    .msg-icon {
+                        color: map-get($colors, information) !important;
+                    }
+                }
+            }
+            .dialog-command {
+                .btn {
+                    color: map-get($colors, information);
+                    background-color: #ededed;
+
+                    &:focus,
+                    &:hover {
+                        background: #eaeaea;
+                    }
+
+                    &.btn-default {
+                        background-color: map-get($backgrounds, information);
+                        border-bottom-color: darken(map-get($borders, information), 2%);
+                        color: #fff;
+
+                        &:hover {
+                            background: darken(map-get($backgrounds, information), 2%);
+                            box-shadow: 0 0 3px darken(map-get($borders, information), 4%);
+                        }
+                        &:focus {
+                            background: darken(map-get($backgrounds, information), 3%);
+                            border-bottom-color: darken(map-get($borders, information), 3%);
+                            box-shadow: 0 0 3px darken(map-get($borders, information), 4%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.warning {
+        .dialog-box {
+            border: solid 1px map-get($borders, warning);
+            box-shadow: 0 0 6px map-get($borders, warning); 
+
+            .dialog-body {
+                .dialog-content {
+                    .msg-icon {
+                        color: map-get($colors, warning) !important;
+                    }
+                }
+            }
+            .dialog-command {
+                .btn {
+                    color: map-get($colors, warning);
+                    background-color: #ededed;
+
+                    &:focus,
+                    &:hover {
+                        background: #eaeaea;
+                    }
+
+                    &.btn-default {
+                        background-color: map-get($backgrounds, warning);
+                        border-bottom-color: darken(map-get($borders, warning), 2%);
+                        color: #fff;
+
+                        &:hover {
+                            background: darken(map-get($backgrounds, warning), 2%);
+                            box-shadow: 0 0 3px darken(map-get($borders, warning), 4%);
+                        }
+                        &:focus {
+                            background: darken(map-get($backgrounds, warning), 3%);
+                            border-bottom-color: darken(map-get($borders, warning), 3%);
+                            box-shadow: 0 0 3px darken(map-get($borders, warning), 4%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<ctm-dialog [dialog-css]="dialogCss">
+    <div ctm-dialog-content>
+        <div class="msg-icon">
+            <span *ngIf="showErrorIcon">
+                <i class="fas fa-times-circle fa-2x"></i>
+            </span>
+            <span *ngIf="showInformationIcon">
+                <i class="fas fa-info-circle fa-2x"></i>
+            </span>
+            <span *ngIf="showQuestionIcon">
+                <i class="fas fa-question-circle fa-2x"></i>
+            </span>
+            <span *ngIf="showWarningIcon">
+                <i class="fas fa-exclamation-circle fa-2x"></i>
+            </span>
+        </div>
+        <p>{{ msgContent }}</p>
+    </div>
+    <div ctm-dialog-command>
+        <button type="button" class="btn" [ngClass]="{ 'btn-default': defaultOKButton }"
+            *ngIf="showOKButton"
+            (click)="onOKClick()" #btnOK>
+            <span>{{ buttonOKCaption }}</span>
+        </button>
+        <button type="button" class="btn" [ngClass]="{ 'btn-default': defaultCloseButton }"
+            *ngIf="showCloseButton"
+            (click)="onCloseClick()" #btnClose>
+            <span>{{ buttonCloseCaption }}</span>
+        </button>
+        <button type="button" class="btn" [ngClass]="{ 'btn-default': defaultYesButton }"
+            *ngIf="showYesButton"
+            (click)="onYesClick()" #btnYes>
+            <span>{{ buttonYesCaption }}</span>
+        </button>
+        <button type="button" class="btn" [ngClass]="{ 'btn-default': defaultNoButton }"
+            *ngIf="showNoButton"
+            (click)="onNoClick()" #btnNo>
+            <span>{{ buttonNoCaption }}</span>
+        </button>
+        <button type="button" class="btn" [ngClass]="{ 'btn-default': defaultCancelButton }"
+            *ngIf="showCancelButton"
+            (click)="onCancelClick()" #btnCancel>
+            <span>{{ buttonCancelCaption }}</span>
+        </button>
+    </div>
+</ctm-dialog>

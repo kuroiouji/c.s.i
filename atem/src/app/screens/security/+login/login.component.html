@@ -1,0 +1,9 @@
+<div class="grid" [formGroup]="ctrlMgr.form">
+  <ctm-textbox subject="Username" 
+              formControlName="Username"
+              [error]="ctrlMgr.error('Username')"></ctm-textbox>
+  <ctm-textbox type="password" subject="Password"
+              formControlName="Password"
+              [error]="ctrlMgr.error('Password')"></ctm-textbox>
+  <button class="btn btn-login" (click)="onLogin()">Login</button>
+</div>

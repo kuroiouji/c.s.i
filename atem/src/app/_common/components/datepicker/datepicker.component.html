@@ -1,0 +1,93 @@
+<div class="txt"
+    [ngClass]="_error.messageClass">
+    <span class="subject"
+            [ngClass]="{ 'required': isRequired }">{{ subject }}&nbsp;</span>
+    <div class="control"
+        [ngClass]="{ 'focus': isFocused }">
+        <input [type]="textType"
+            autocomplete="off"
+            [(ngModel)]="inputValue"
+            [readonly]="readonly" 
+            [tabindex]="disabled ? -1 : tabindex"
+            [disabled]="disabled" 
+            [minlength]="minLength"
+            [maxlength]="maxLength"
+            [placeholder]="placeholder"
+            (keypress)="onKeypress($event)"
+            (change)="onChange()"
+            (focus)="onFocus()"
+            (blur)="onBlur()">
+        <button class="btn-datepicker"
+            (click)="onTrickerDatePicker()">
+            <i class="fas fa-calendar-alt"></i>
+        </button>
+    </div>
+    <div class="ctrl-tooltip"
+        *ngIf="_error.message && isFocused">
+        <span>{{ _error.message }}</span>
+    </div>
+</div>
+<ctm-dialog dialog-css="dialog-datepicker">
+    <div ctm-dialog-content>
+        <div class="calendar-header">
+            <div class="day-name">{{ dayNameText }}<div class="close" (click)="onCloseCalendar()"><i class="fas fa-times-circle"></i></div></div>
+            <div class="day" (click)="onShowCalendar()">{{ dayText }}</div>
+            <div class="month" (click)="onShowMonth()">{{ monthText }}</div>
+            <div class="year" (click)="onShowYear()">{{ yearText }}</div>
+        </div>
+        <div class="calender-content">
+            <div class="calendar-year"
+                *ngIf="showCalendarYear">
+                <div class="year" *ngFor="let y of calendarYears"
+                    [ngClass]="yearCss(y)"
+                    (click)="onSelectYear(y)">{{ y.year }}</div>
+                <div class="prev" (click)="onPrevYear()">
+                    <i class="fas fa-angle-double-left"></i>
+                </div>
+                <div class="next" (click)="onNextYear()">
+                    <i class="fas fa-angle-double-right"></i>
+                </div>
+            </div>
+            <div class="calendar-month"
+                *ngIf="showCalendarMonth">
+                <div class="month" *ngFor="let m of calendarMonths"
+                    [ngClass]="monthCss(m)"
+                    (click)="onSelectMonth(m)">{{ m.name }}</div>
+            </div>
+            <div class="calendar"
+                *ngIf="showCalendar">
+                <table class="table">
+                    <colgroup>
+                        <col class="table-week-day">
+                        <col class="table-week-day">
+                        <col class="table-week-day">
+                        <col class="table-week-day">
+                        <col class="table-week-day">
+                        <col class="table-week-day">
+                        <col class="table-week-day">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>SU</th>
+                            <th>MO</th>
+                            <th>TU</th>
+                            <th>WE</th>
+                            <th>TH</th>
+                            <th>FR</th>
+                            <th>SA</th>
+                        </tr>  
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let w of calendarDays">
+                            <td *ngFor="let d of w">
+                                <div class="day"
+                                    [ngClass]="dayCss(d)"
+                                    (click)="onSelectDay(d)">{{ d.date }}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ctm-dialog>

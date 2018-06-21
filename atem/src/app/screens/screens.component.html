@@ -1,0 +1,71 @@
+<div style="margin: 6px 24px">
+  <div style="margin-bottom: 6px;">
+      <button class="btn">Default</button>
+      <button class="btn btn-error">Error</button>
+      <button class="btn btn-information">Information</button>
+      <button class="btn btn-warning">Warning</button>
+  </div>
+  <div style="margin-bottom: 6px;">
+    <button class="btn" (click)="onOpenError()">Error</button>
+    <button class="btn" (click)="onOpenInformation()">Information</button>
+    <button class="btn" (click)="onOpenQuestion()">Question</button>
+    <button class="btn" (click)="onOpenQuestionOk()">Question (OK)</button>
+    <button class="btn" (click)="onOpenQuestionCancel()">Question with Cancel</button>
+    <button class="btn" (click)="onOpenWarning()">Warning</button>
+    <button class="btn" (click)="onOpenWarningQuestion()">Warning with Question</button>
+  </div>
+  <div style="margin-bottom: 6px;">
+    <div class="grid" [formGroup]="ctrlMgr.form">
+      <ctm-textbox subject="Label 1" 
+                  formControlName="Value1"
+                  [required]="true"
+                  [error]="ctrlMgr.error('Value1')"></ctm-textbox>
+      <ctm-textbox subject="Label 2" prefix="XXX"
+                  formControlName="Value2"
+                  [required]="true"
+                  [error]="ctrlMgr.error('Value2')"></ctm-textbox>
+      <ctm-textbox subject="Label 3" suffix="Baht"
+                  formControlName="Value3"
+                  [required]="true"
+                  [error]="ctrlMgr.error('Value3')"></ctm-textbox>
+      <button class="btn" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+  <div style="margin-bottom: 6px;">
+    <div class="grid" [formGroup]="ctrlMgr.form">
+      <ctm-autocomplete subject="Label 1" 
+                  formControlName="Value21"
+                  key="GROUP"
+                  [required]="true"
+                  [error]="ctrlMgr.error('Value21')"></ctm-autocomplete>
+      <ctm-autocomplete subject="Label 2" 
+                  formControlName="Value22"
+                  key="GROUP"
+                  [required]="true"
+                  [error]="ctrlMgr.error('Value22')"></ctm-autocomplete>
+      <div>
+        <span>{{ ctrlMgr.data["Value21"] }}</span><br/>
+        <span>{{ ctrlMgr.data["Value22"] }}</span>
+      </div>      
+    </div>
+  </div>
+  <div style="margin-bottom: 6px;">
+    <div class="grid" [formGroup]="ctrlMgr.form">
+      <ctm-datepicker subject="Label 1" 
+                  formControlName="Value31"
+                  [required]="true"
+                  [disable-weekdays]="[0,1]"
+                  [error]="ctrlMgr.error('Value31')"></ctm-datepicker>
+    </div>
+  </div>
+  <div style="margin-bottom: 6px;">
+    <div class="grid" [formGroup]="ctrlMgr.form">
+      <ctm-datepicker subject="Date From" 
+                  formControlName="Value41"
+                  [max]="ctrlMgr.form.controls.Value42"></ctm-datepicker>
+      <ctm-datepicker subject="Date To" 
+                  formControlName="Value42"
+                  [min]="ctrlMgr.form.controls.Value41"></ctm-datepicker>
+    </div>
+  </div>
+</div>

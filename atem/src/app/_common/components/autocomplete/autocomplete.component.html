@@ -1,0 +1,41 @@
+<div class="txt"
+    [ngClass]="_error.messageClass">
+    <span class="subject"
+            [ngClass]="{ 'required': isRequired }">{{ subject }}&nbsp;</span>
+    <div class="control"
+        [ngClass]="{ 'focus': isFocused }">
+        <input [type]="textType"
+            autocomplete="off"
+            [(ngModel)]="inputValue"
+            [readonly]="readonly" 
+            [tabindex]="disabled ? -1 : tabindex"
+            [disabled]="disabled" 
+            [minlength]="minLength"
+            [maxlength]="maxLength"
+            [placeholder]="placeHolderText"
+            (keydown)="onKeydown($event)"
+            (keyup)="onKeyup($event)"
+            (change)="onChange()"
+            (focus)="onFocus()"
+            (blur)="onBlur()">
+        <button class="btn-autocomplete"
+            (click)="onTrickerAutocomplete()">
+            <i class="fas fa-angle-down"></i>
+        </button>
+    </div>
+    <div class="ctrl-tooltip"
+        *ngIf="_error.message && isFocused">
+        <span>{{ _error.message }}</span>
+    </div>
+</div>
+<div #divAutocomplete>
+  <ul class="autocomplete"
+      *ngIf="showAutocomplete"
+      [ngClass]="{'show': showAutocomplete }">
+    <li class="item" *ngFor="let data of list; let i = index;"
+      [ngClass]="{ 'selected': data.selected }"
+      (click)="onSelectItem(i)">
+      <span [innerHtml]="data.display | highlight: inputValue"></span>
+    </li>
+  </ul>
+</div>

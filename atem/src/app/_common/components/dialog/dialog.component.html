@@ -1,0 +1,17 @@
+<div class="dialog" 
+    *ngIf="showDialog"
+    [ngClass]="dialogCss">
+    <div class="dialog-ovelay"
+        [ngClass]="{'show': showCss }"></div>
+    <div class="dialog-box"
+        [ngClass]="{'show': showCss }">
+        <div class="dialog-body">
+            <div class="dialog-content">
+                <ng-content select="[ctm-dialog-content]"></ng-content>
+            </div>
+        </div>
+        <div class="dialog-command">
+            <ng-content select="[ctm-dialog-command]"></ng-content>
+        </div>
+    </div>
+</div>

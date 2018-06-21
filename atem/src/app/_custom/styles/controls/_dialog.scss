@@ -1,0 +1,104 @@
+@import "../variables";
+@import "../functions";
+
+.dialog {
+    .dialog-ovelay {
+        // Disable events from being captured on the overlay container.
+        pointer-events: all;
+
+        // The container should be the size of the viewport.
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9000;
+
+        background-color: rgba(0,0,0,0);
+        @include animation(dialog-overlay-hide 0.5s linear);
+
+        &.show {
+            background-color: rgba(0,0,0,0.5);
+            @include animation(dialog-overlay-show 0.2s linear);
+        }
+    }
+    .dialog-box {
+        position: fixed;
+        z-index: 9001;
+
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+
+        min-width: 300px;
+        max-width: 90vw;
+
+        border: solid 1px $dialog-border;
+        background: $dialog-background;
+        box-shadow: 0 0 6px $dialog-shadow; 
+
+        .dialog-body {
+            position: relative;
+            width: 100%;
+
+            .dialog-content {
+                min-height: 150px;
+                max-height: 90vh;
+
+                overflow: auto;
+                padding: 6px;
+            }
+        }
+        .dialog-command {
+            text-align: right;
+            padding: 6px;
+        }
+
+        opacity: 0;
+        top: 40%;
+        left: 50%;
+        @include animation(dialog-hide 0.3s linear);
+
+        &.show {
+            opacity: 1;
+            top: 50%;
+            @include animation(dialog-show 0.3s linear);
+        }
+    }
+}
+
+@keyframes dialog-overlay-show {
+    0% { 
+        background-color: rgba(0,0,0,0); 
+    }
+    100% { 
+        background-color: rgba(0,0,0,0.5); 
+    }
+}
+@keyframes dialog-overlay-hide {
+    0% { 
+        background-color: rgba(0,0,0,0.5); 
+    }
+    100% { 
+        background-color: rgba(0,0,0,0); 
+    }
+}
+@keyframes dialog-show {
+    0% { 
+        opacity: 0;
+        top: 40%; 
+    }
+    100% { 
+        opacity: 1;
+        top: 50%;
+    }
+}
+@keyframes dialog-hide {
+    0% { 
+        opacity: 1;
+        top: 50%;
+    }
+    100% { 
+        opacity: 0;
+        top: 40%;
+    }
+}

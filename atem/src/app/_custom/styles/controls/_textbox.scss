@@ -1,0 +1,85 @@
+@import "../variables";
+@import "../functions";
+
+.txt {
+    position: relative;
+
+    .subject {
+        display: block;
+        margin: 3px 6px 0 1px;
+        font-size: 12px;
+
+        &.required {
+            &:after {
+                content: " *";
+                font-weight: 700;
+                color: map-get($colors, error);
+            }
+        }
+    }
+    .control {
+        display: flex;
+        border: 1px solid map-get($borders, default);
+        background: #fff;
+        
+        input {
+            color: $font-color;
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px 6px 6px 6px;
+
+            &[disabled] {
+                color: map-get($colors, disabled);
+                background: lighten(map-get($borders, default), 8%);
+            }
+        }
+
+        .prefix,
+        .suffix {
+            padding: 6px;
+            background: lighten(map-get($borders, default), 6%);
+        }
+
+        &.focus {
+            border-color: darken(map-get($borders, default), 1%);
+            box-shadow: 0 0 3px darken(map-get($borders, default), 3%); 
+        }
+    }
+
+    &.ctrl-error {
+        .subject {
+            color: map-get($colors, error);
+        }
+        .control {
+            border-color: map-get($borders, error);
+
+            &.focus {
+                border-color: darken(map-get($borders, error), 1%);
+                box-shadow: 0 0 3px darken(map-get($borders, error), 3%); 
+            }
+        }
+        .ctrl-tooltip {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            color: #fff;
+
+            background: lighten(map-get($backgrounds, error), 10%);
+            padding: 3px 12px;
+            margin-bottom: 6px;
+            transform: translate(-50%, -50%);
+
+            @include animation(text-tooltip-show 0.4s linear);
+        }
+    }
+}
+
+@keyframes text-tooltip-show {
+    0% { 
+        opacity: 0;
+    }
+    100% { 
+        opacity: 1;
+    }
+}

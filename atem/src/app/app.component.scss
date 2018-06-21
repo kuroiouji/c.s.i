@@ -1,0 +1,19 @@
+@import "_custom/styles/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font: 14px/16px $font-family;
+  color: $font-color;
+  background-color: $background;
+}
+
+@import "_custom/styles/controls/button";
+@import "_custom/styles/controls/textbox";
+@import "_custom/styles/controls/autocomplete";
+@import "_custom/styles/controls/datepicker";
+
+@import "_custom/styles/controls/dialog";
+@import "_custom/styles/controls/message";

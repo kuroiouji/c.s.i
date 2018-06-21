@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEMPLATE</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="TEMPLATE">
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" />
+    
+    <% if (webpackConfig.htmlElements.headTags) { %>
+    <!-- Configured Head Tags  -->
+    <%= webpackConfig.htmlElements.headTags %>
+    <% } %>
+    
+    <!-- Async Google Analytics: change UA-71073175-1 to be your site's ID -->
+    <!--
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-71073175-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    -->
+    <!-- End Google Analytics -->
+
+    <!-- Fontawesome -->
+    <script defer src="assets/js/fa-solid.min.js"></script>
+    <script defer src="assets/js/fontawesome.min.js"></script>
+    
+    <!-- CSS will be injected by webpack here -->
+    <!-- Preload link tags will be injected by webpack here -->
+    <link rel="stylesheet" href="assets/css/root.css" />
+    
+  </head>
+  <body>
+    <my-app></my-app>
+    <div class="app-loading">
+      <h1>Loading<span>...</span></h1>
+    </div>
+
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=console.*,Intl.~locale.en&gated=1"></script>
+    <% if (htmlWebpackPlugin.options.metadata.isDevServer) { %>
+      <!-- DLL files -->
+      <script src="/polyfill.dll.js"></script>
+      <script src="/vendor.dll.js"></script>
+    <% } %>
+  </body>
+</html>

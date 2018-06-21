@@ -1,0 +1,29 @@
+$font-family: "Tahoma" !default;
+$font-color: #414C59 !default;
+
+$background: #f0f0f0 !default;
+
+$colors: (
+    default: $font-color,
+    error: #E53935,
+    information: #039BE5,
+    warning: #FF9800,
+    disabled: #dc770b
+) !default;
+$borders: (
+    default: #e0e0e0,
+    error: #E53935,
+    information: #039BE5,
+    warning: #FF9800
+) !default;
+$backgrounds: (
+    default: #ededed,
+    error: #EF5350,
+    information: #03A9F4,
+    warning: #FF9800,
+    confirm: #81C784
+) !default;
+
+$dialog-border: map-get($borders, default);
+$dialog-background: $background;
+$dialog-shadow: #333;

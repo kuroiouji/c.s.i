@@ -1,0 +1,27 @@
+<div class="txt"
+    [ngClass]="_error.messageClass">
+    <span class="subject"
+            [ngClass]="{ 'required': isRequired }">{{ subject }}&nbsp;</span>
+    <div class="control"
+        [ngClass]="{ 'focus': isFocused }">
+        <span class="prefix" *ngIf="usePrefix">{{ prefix }}</span>
+        <input [type]="textType"
+            autocomplete="off"
+            [(ngModel)]="value"
+            [readonly]="readonly" 
+            [tabindex]="disabled ? -1 : tabindex"
+            [disabled]="disabled" 
+            [minlength]="minLength"
+            [maxlength]="maxLength"
+            [placeholder]="placeholder"
+            (keypress)="onKeypress($event)"
+            (change)="onChange()"
+            (focus)="onFocus()"
+            (blur)="onBlur()">
+        <span class="suffix" *ngIf="useSuffix">{{ suffix }}</span>
+    </div>
+    <div class="ctrl-tooltip"
+        *ngIf="_error.message && isFocused">
+        <span>{{ _error.message }}</span>
+    </div>
+</div>

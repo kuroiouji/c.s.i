@@ -40,8 +40,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   private onSubmit() {
-    console.log("Submit");
-    console.log(this.ctrlMgr.validate());
+    this.ctrlMgr.validate();
   }
 
 }

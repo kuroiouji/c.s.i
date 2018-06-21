@@ -3,25 +3,27 @@
     padding: 2%;
 }
 
-.igrid{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 6px;
-}
-
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-}
-.btn-grid{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
     grid-gap: 6px;
+    padding: 6px 24px;
+    .igrid{
+        textarea{
+            width: 100%;
+            height: 74px;
+            border: 1px solid #e0e0e0;
+            background: #fff;
+            outline: none;
+            padding: 5px 6px 6px 6px;
+            resize: none;
+        }
+    }
 }
-textarea{
-    color: #414C59;
-    outline: none;
-    width: 100%;
-    padding: 5px 6px 6px 6px;
+
+.grid-2{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 6px;
+    padding: 6px 24px;
 }

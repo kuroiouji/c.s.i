@@ -1,6 +1,15 @@
+.body{
+    background-color: white;
+    padding: 2%;
+}
 .grid {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
+    grid-gap: 6px;
+}
+.grid-table {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     grid-gap: 6px;
 }
 
@@ -10,4 +19,26 @@
 
 .text-center{
     text-align: center;
+}
+
+.table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    display: table;
+    td,th{
+        border: solid 2px #b6b4b4;
+        th{
+            font-weight: bold;
+            font-size: 25px;
+        }
+    }
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.bg-defult{
+    background-color: #f1f1f1;
 }

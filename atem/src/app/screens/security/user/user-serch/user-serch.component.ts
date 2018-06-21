@@ -21,7 +21,9 @@ export class UserSerchComponent implements OnInit {
         fb.group({
             "UserName": [{ value: null, disabled: false }],
             "GroupID": [{ value: null, disabled: false }],
-            "FlagActive": [{ value: true, disabled: false }],
+            "FlagActive": [{ value: null, disabled: false }],
+            "page": [{ value: 1, disabled: false }],
+            "paging": [{ value: 50, disabled: false }],
         })
       );
     }
@@ -32,8 +34,8 @@ export class UserSerchComponent implements OnInit {
   private list:Array<object> = [];
   private onSearch(){
     let data = this.ctrlMgr.data;
-    data["page"] =  1;
-    data["paging"]  = 50;
+    // data["page"] =  1;
+    // data["paging"]  = 50;
     this.api.callApiController("api/SCS020/GetUserList", {
       type: "POST",
       anonymous: true,
@@ -51,6 +53,6 @@ export class UserSerchComponent implements OnInit {
   }
 
   private dateText(date){
-    return moment(date).format("DD/MM/YYYY");
+    return moment(date).set('year', moment(date).get('year')+543).format("DD/MM/YYYY");
   }
 }

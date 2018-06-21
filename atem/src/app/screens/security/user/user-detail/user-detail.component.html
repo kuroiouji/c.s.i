@@ -1,3 +1,53 @@
 <p>
   user-detail works!
 </p>
+<div class="body">
+  <div style="margin: 6px 24px">
+    <div class="grid">
+      <div class="igrid" [formGroup]="ctrlMgr.form">
+        <ctm-textbox subject="Username" 
+          formControlName="UserName"></ctm-textbox>
+        <ctm-textbox subject="Password" 
+          formControlName="PassWord"></ctm-textbox>
+        <ctm-autocomplete subject="Group" class="group" 
+          formControlName="GroupID"
+          key="GROUP"></ctm-autocomplete>
+        <ctm-autocomplete subject="Status" class="status" 
+          formControlName="FlagActive"
+          key="ACTIVE_STATUS"></ctm-autocomplete>
+      </div>
+      <div class="igrid" [formGroup]="ctrlMgr.form"> 
+        <ctm-textbox subject="First Name" 
+          formControlName="FirstName"></ctm-textbox>
+        <ctm-textbox subject="Last Name" 
+          formControlName="LastName"></ctm-textbox>
+        <ctm-autocomplete subject="Gender" class="gender" 
+          formControlName="Gender"
+          key="ACTIVE_STATUS"></ctm-autocomplete>
+        <ctm-textbox subject="Nickname" 
+          formControlName="NickName"></ctm-textbox>
+        <ctm-textbox subject="Citizen ID" 
+          formControlName="CitizenID"></ctm-textbox>
+        <ctm-datepicker subject="Birthday" 
+          formControlName="BirthDate"></ctm-datepicker>
+        </div>
+      <div class="igrid" [formGroup]="ctrlMgr.form"> 
+        <div class="txt">
+          <span class="subject">Address</span>
+          <textarea formControlName="Address"></textarea>
+        </div>
+        <ctm-textbox subject="Tel" 
+          formControlName="TelNo"></ctm-textbox>
+        <div class="txt">
+          <span class="subject">Remark</span>
+          <textarea formControlName="Remark"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+      <div class="btn-grid">
+        <button style="width: 25%;margin-left: 25%;" class="btn btn-information">Save</button>
+      </div>
+  </div>
+</div>

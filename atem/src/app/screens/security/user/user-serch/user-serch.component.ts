@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 
 import { CtmApiService, CtmTranslateService, CtmMessageService, MESSAGE_DIALOG_TYPE, USER_LOCAL_STORAGE } from "../../../../_common";
 import { CtmControlManagement } from "../../../../_common";
+import { ScreensComponent } from '../../../screens.component';
 
 let moment = require('moment');
 @Component({
@@ -16,7 +17,7 @@ export class UserSerchComponent implements OnInit {
     private translate: CtmTranslateService,
     private message: CtmMessageService,
     private fb: FormBuilder,
-    private api: CtmApiService) { 
+    private api: CtmApiService,) { 
       this.ctrlMgr = new CtmControlManagement(
         fb.group({
             "UserName": [{ value: null, disabled: false }],
@@ -53,6 +54,6 @@ export class UserSerchComponent implements OnInit {
   }
 
   private dateText(date){
-    return moment(date).set('year', moment(date).get('year')+543).format("DD/MM/YYYY");
+    return moment(date).add(543,'year').locale('th').format("DD MMM YYYY");
   }
 }

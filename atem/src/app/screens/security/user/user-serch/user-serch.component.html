@@ -25,7 +25,7 @@
   </div>
   
   <div class="grid-table">
-    <table class="table" border="0">
+    <table border="0">
       <thead>
         <tr>
           <th>No</th>
@@ -36,13 +36,14 @@
           <th>Status</th>
         </tr>
       </thead>
-      <tbody class="bg-defult">
-        <tr *ngFor="let row of list;let i = index" [ngClass]="{'bg-white' : row.FlagActive}">
+      <tbody>
+        <tr *ngFor="let row of list;let i = index" [ngClass]="{'bg-white' : row.FlagActive === true,'bg-defult' : row.FlagActive === false}">
           <td class="text-center">{{i+1}}</td>
           <td>{{row.GroupNameEN}}</td>
           <td>{{row.Name}}</td>
           <td>{{row.NickName}}</td>
-          <td class="text-center">{{ dateText(row.LastLoginDate) }}</td>
+          <!-- <td class="text-center">{{ dateText(row.LastLoginDate) }}</td> -->
+          <td class="text-center">{{ row.LastLoginDate | date: "DD/MM/YYYY":"th" }}</td>
           <td class="text-center">
             <span *ngIf="row.FlagActive == true">
               <i class="fas fa-check active"></i>

@@ -11,6 +11,7 @@ import { CtmControlManagement } from "../_common";
 })
 export class ScreensComponent {
   private ctrlMgr: CtmControlManagement;
+  private show:boolean = false;
 
   constructor(
     private translate: CtmTranslateService,

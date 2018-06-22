@@ -1,0 +1,60 @@
+.body{
+    background-color: white;
+    padding: 2%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 6px;
+    // padding: 6px 24px;
+    .igrid{
+        textarea{
+            width: 100%;
+            height: 74px;
+            border: 1px solid #e0e0e0;
+            background: #fff;
+            outline: none;
+            padding: 5px 6px 6px 6px;
+            resize: none;
+        }
+    }
+}
+
+.grid-table {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 6px;
+}
+
+.active{
+    color: green;
+}
+
+.unactive{
+    color: red;
+}
+
+.text-center{
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+    td,th{
+        border: solid 2px #f1f1f1;
+        padding: 8px;
+    }
+    th{
+        background-color: #b9b7b7;
+        color: white;
+        font-size: 16px;
+    }
+}
+
+a{
+    cursor: pointer;
+}

@@ -1,0 +1,59 @@
+<p>
+  user-group-search works!
+</p>
+
+<div class="body">
+  <div style="margin: 6px 24px">
+      <button class="btn btn-information" (click)="nextPage()"><i class="fas fa-file-alt"></i> เพิ่ม</button>
+    </div>
+
+  <div style="margin: 6px 24px">
+    <h3><i class="fas fa-search"></i> เงื่อนไขในการค้นหา</h3>
+    <div class="grid" [formGroup]="ctrlMgr.form">
+      <ctm-textbox subject="ชื่อกลุ่ม" 
+        formControlName="GroupName"></ctm-textbox>
+      <ctm-textbox subject="รายละเอียด" 
+        formControlName="Description"></ctm-textbox>
+      <ctm-autocomplete subject="สมาชิกในกลุ่ม" class="group" 
+        formControlName="UserName"
+        key="USER"></ctm-autocomplete>
+      <ctm-autocomplete subject="สถานะ" class="status" 
+        formControlName="FlagActive"
+        key="ACTIVE_STATUS"></ctm-autocomplete>
+    </div>
+  </div>
+
+  <div style="margin: 6px 24px">
+    <button class="btn btn-information" (click)="onSearch()"><i class="fas fa-search"></i> ค้นหา</button>
+    <button class="btn" (click)="onClear()"><i class="fas fa-undo"></i> เคลียร์</button>
+  </div>
+  <div style="margin: 6px 24px">
+    <div class="grid-table">
+      <table border="0">
+        <thead>
+          <tr>
+            <th>ลำดับที่</th>
+            <th>รหัสกลุ่ม</th>
+            <th>ชื่อกลุ่ม</th>
+            <th>รายละเอียด</th>
+            <th>ใช้งาน</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of list;let i = index" [ngClass]="{'bg-white' : row.FlagActive === true,'bg-defult' : row.FlagActive === false}">
+              <td class="text-center">{{i+1}}</td>
+              <td>
+                  <i [ngStyle]="{'opacity': row.FlagSystemAdmin? '0' : '1'}" class="fas fa-trash-alt"></i> 
+                  &nbsp;<a (click)="nextPage(row.GroupID)">{{row.GroupID}}</a>
+              </td>
+              <td>{{row.NameEN}}</td>
+              <td>{{row.Description}}</td>
+              <td class="text-center">
+                  <i class="fas fa-circle" [ngClass]="{'active':row.FlagActive === true,'unactive':row.FlagActive === false}"></i>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

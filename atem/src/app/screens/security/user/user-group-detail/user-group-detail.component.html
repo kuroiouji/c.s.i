@@ -1,0 +1,105 @@
+<p>
+  user-group-detail works!
+</p>
+<div class="body">
+  <div style="margin: 6px 24px">
+    <div class="grid">
+      <h3><i class="fas fa-user-friends"></i> การจัดกลุ่มผู้ใช้</h3>
+      <div style="text-align: right"><button class="btn" style="width: 20%" (click)="goBack()"><i class="fas fa-arrow-left"></i> ย้อนกลับ</button></div>
+    </div>
+  </div>
+
+  <div style="margin: 6px 24px">
+    <button class="btn btn-information"><i class="fas fa-file-alt"></i> เพิ่ม</button>
+    <button class="btn btn-warning"><i class="fas fa-edit"></i> แก้ไข</button>
+  </div>
+  
+  <div style="margin: 6px 24px">
+    <div class="grid">
+      <div class="igrid" [formGroup]="ctrlMgr.form">
+        <h3>ข้อมูลกลุ่ม</h3>
+        <div class="grid">
+          <ctm-textbox subject="รหัสกลุ่ม" 
+            formControlName="GroupID"></ctm-textbox>
+          <ctm-textbox subject="ชื่อกลุ่ม" 
+            formControlName="NameEN"
+            [required]="true"
+            [error]="ctrlMgr.error('NameEN')"></ctm-textbox>
+        </div>
+        <div class="txt">
+          <span class="subject">รายละเอียด</span>
+          <textarea formControlName="Description"></textarea>
+        </div>
+        <div class="txt">
+          <input type="checkbox" formControlName="FlagActive">
+          <span> สามารถใช้งานได้</span>
+        </div>
+        <div class="grid">
+          <ctm-textbox subject="ส่วนลดเงินสด" suffix="%"
+            formControlName="CrashDiscount"
+            [required]="true"
+            [error]="ctrlMgr.error('CrashDiscount')"></ctm-textbox>
+          <ctm-textbox subject="ส่วนลดบัตรเครดิต" suffix="%"
+            formControlName="CreditDiscount"
+            [required]="true"
+            [error]="ctrlMgr.error('CreditDiscount')"></ctm-textbox>
+        </div>
+      </div>
+
+      <div class="igrid" [formGroup]="ctrlMgr.form">
+        <h3>สมาชิกในกลุ่ม</h3>
+        <div class="grid-table">
+          <table>
+            <thead>
+              <th style="width: 15%">ลำดับที่</th>
+              <th>ชื่อผู้ใช้</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of listU;let i = index">
+                <td class="text-center">{{ i+1 }}</td>
+                <td>{{ row.FirstName }}  {{ row.LastName }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin: 6px 24px">
+    <h3>จัดการสิทธิ</h3>
+    <div class="grid-table">
+      <table border="0">
+        <thead>
+          <tr>
+            <th colspan="2" style="width: 45%">ชื่อสกรีน</th>
+            <th style="width: 7%">เปิด</th>
+            <th style="width: 7%">เพิ่ม</th>
+            <th style="width: 7%">แก้ไข</th>
+            <th style="width: 7%">ลบ</th>
+            <th style="width: 7%">พิมพ์</th>
+            <th style="width: 7%">ข้อมูลเข้า</th>
+            <th style="width: 7%">ข้อมูลออก</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let p of listP">
+            <tr *ngIf="checkNull(p)">
+              <td colspan="9"><i [ngClass]="p.GroupImageIcon"></i> {{ p.GroupNameLC }}</td>
+            </tr>
+            <tr *ngFor="let sc of p.Screens">
+              <td></td>
+              <td><i [ngClass]="sc.GroupImageIcon"></i> {{ sc.NameLC }}</td>
+              <td *ngFor="let rs of permission">
+                <div *ngIf="sc[rs.propSCN]" class="text-center">
+                  <input type="checkbox" [(ngModel)]="sc[rs.propROL]" [disabled]="true">
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

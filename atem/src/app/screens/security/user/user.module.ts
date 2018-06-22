@@ -7,6 +7,9 @@ import { routing } from "./user.routing";
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CtmModule } from '../../../_common';
+import { UserGroupSearchComponent } from './user-group-search/user-group-search.component';
+import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.component';
+import { ScreenParam } from './user.screen-param';
 
 @NgModule({
   imports: [
@@ -17,6 +20,12 @@ import { CtmModule } from '../../../_common';
     routing,
     CtmModule
   ],
-  declarations: [UserSerchComponent, UserDetailComponent]
+  declarations: [
+    UserSerchComponent, 
+    UserDetailComponent, 
+    UserGroupSearchComponent, 
+    UserGroupDetailComponent
+  ],
+  providers: [ScreenParam]
 })
 export class UserModule { }

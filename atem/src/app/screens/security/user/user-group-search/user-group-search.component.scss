@@ -1,0 +1,56 @@
+.body{
+    background-color: white;
+    padding: 2%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 6px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 6px;
+}
+
+.grid-table {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 6px;
+}
+
+.active{
+    color: green;
+}
+
+.unactive{
+    color: red;
+}
+
+.text-center{
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-family: "Times New Roman", Times, serif;
+    td,th{
+        border: solid 2px #f1f1f1;
+        padding: 8px;
+    }
+    th{
+        background-color: #b9b7b7;
+        color: white;
+        font-size: 16px;
+    }
+}
+
+a{
+    cursor: pointer;
+    text-decoration: underline;
+}
+  

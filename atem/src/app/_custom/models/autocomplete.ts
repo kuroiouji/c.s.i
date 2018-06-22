@@ -19,5 +19,10 @@ export const AUTOCOMPLETE_CACHE = {
         },
         display: "NameEN",
         value:"ConstantValue"
+    },
+    "USER":{
+        url: "api/Common/GetUserAutoComplete",
+        display: "UserName",
+        value: "UserName"
     }
 };

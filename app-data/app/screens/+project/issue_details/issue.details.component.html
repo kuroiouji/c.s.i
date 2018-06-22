@@ -1,0 +1,279 @@
+﻿
+      
+
+
+
+<div class="container-fluid">
+    <div bacardblur="" zoom-in="" class="animated fadeIn card  with-scroll">
+        <div class="card-header">
+            <h2 class="card-title" translate="" align="left">ISSUE DETAIL</h2>
+            <button class="btn btn-command btn-primary mr-2 " *ngIf="!screenParam.newData " (click)="editCommand()" [disabled]="!controlDisabled && !CheckDisable('Edit')" >
+                <i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>
+                <span>{{ "editButton" | translate: "COMMON" }}</span>
+            </button>
+            <div class="pull-right" *ngIf="!screenParam.newData">
+                <button class="btn  btn-warning navbar-btn" [disabled]="!CheckDisable('Miss')" (click)="ClickModal('Miss')"  data-toggle="modal" data-target="#myModal2">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                    <span>Miss Issue</span>
+                </button>
+                <button class="btn  btn-danger" [disabled]="!CheckDisable('Cancel')" (click)="ClickModal('Cancel')"  data-toggle="modal" data-target="#myModal2">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <span>Cancel Issue</span>
+                </button>
+                <button class="btn  btn-primary" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        <span>ประวัติ Status</span></button>
+            </div>
+        </div>
+        <div class="card-block" [formGroup]="ctrlMgr.form">
+                
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1  form-control-label" for="inputEmail3" required>Project Name</label>
+                    <div class="col-xl-3  col-sm-3 col-md-3 col-lg-3">
+                        
+                        <md2-autocomplete autocomplete-key="ProjectAll"
+                        autocomplete-placeholder="ALL"
+                        formControlName="is_pj_id"
+                        [error]="ctrlMgr.error('is_pj_id')"
+                        (change)="ProjectChange($event)"></md2-autocomplete>
+    
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputEmail3" required>Ref.NO</label>
+                    <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                        <ctm-textbox formControlName="is_no"
+                        [error]="ctrlMgr.error('is_no')"></ctm-textbox>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputEmail3" required>Title</label>
+                    <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                        <ctm-textbox formControlName="is_title"
+                        [error]="ctrlMgr.error('is_title')"></ctm-textbox>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputEmail3" required>Module</label>
+                    <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                        <ctm-textarea rows="5" formControlName="is_module"
+                        [error]="ctrlMgr.error('is_module')"></ctm-textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputEmail3" required>Description</label>
+                    <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                        <ctm-textarea rows="5" formControlName="is_description"
+                        [error]="ctrlMgr.error('is_description')"></ctm-textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputEmail3" required>Expect Result</label>
+                    <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                        <ctm-textarea  rows="5" formControlName="is_expect_result"
+                        [error]="ctrlMgr.error('is_expect_result')"></ctm-textarea>
+                    </div>
+                </div>
+                
+                <div class="row form-group">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" required>Found by</label>
+                    <div class="col-xl-3  col-sm-5 col-md-4 col-lg-4">
+                    
+                        <md2-autocomplete autocomplete-key="AllUser"
+                        formControlName="is_found_by"
+                        [error]="ctrlMgr.error('is_found_by')"></md2-autocomplete>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3" required>Found Date</label>
+                    <div class="col-xl-3  col-sm-5 col-md-4 col-lg-4">
+                        <md2-datepicker formControlName="is_found_date" [error]="ctrlMgr.error('is_found_date')"
+                        locale="th" role="datepicker" class="ng-tns-c4-1 ng-untouched ng-pristine ng-valid" aria-required="false" aria-disabled="false" aria-invalid="false">
+                                <div class="input-group ctm-md2-datepicker">
+                                    <input class="form-control" autocomplete="off" tooltip-position="above" type="text" tabindex="0">
+                                    <span class="input-group-btn ctm-md2-datepicker-button">
+                                        <button class="btn" tabindex="-1" type="button">
+                                            <svg height="24" viewBox="0 0 24 24" width="24" class="ng-tns-c4-1">>
+                                            <path class="ng-tns-c4-1" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path>
+                                        </svg>
+                                        </button>
+                                    </span>  
+                                </div>
+                            </md2-datepicker>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3" required>Found Phase</label>
+                    <div class="col-xl-3  col-sm-5 col-md-4 col-lg-4">
+                         <md2-autocomplete autocomplete-key="Phase"
+                            formControlName="is_found_phase" #isfoundphase
+                            [error]="ctrlMgr.error('is_found_phase')"></md2-autocomplete>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3" required>Cause Phase</label>
+                    <div class="col-xl-3  col-sm-5 col-md-4 col-lg-4">
+                        
+                            <md2-autocomplete autocomplete-key="Phase"
+                            formControlName="is_cause_phase" #iscausephase
+                            [error]="ctrlMgr.error('is_cause_phase')"></md2-autocomplete>
+                    </div>
+                </div>
+               
+                <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3">Dead line</label>
+                    <div class="col-xl-3  col-sm-5 col-md-4 col-lg-4">
+                        <md2-datepicker formControlName="is_deadline"
+                        locale="th" role="datepicker" class="ng-tns-c4-1 ng-untouched ng-pristine ng-valid" aria-required="false" aria-disabled="false" aria-invalid="false">
+                            <div class="input-group ctm-md2-datepicker">
+                                <input class="form-control" autocomplete="off" tooltip-position="above" type="text" tabindex="0">
+                                <span class="input-group-btn ctm-md2-datepicker-button">
+                                    <button class="btn" tabindex="-1" type="button">
+                                        <svg height="24" viewBox="0 0 24 24" width="24" class="ng-tns-c4-1">
+                                        <path class="ng-tns-c4-1" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path>
+                                    </svg>
+                                    </button>
+                                </span>  
+                            </div>
+                        </md2-datepicker>
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                        <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3">File Upload</label>
+                        <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7" >
+                                <ng2-file-input [id]="'multiFilesInputWithPreview'" (onCouldNotRemove)="onCouldNotRemove($event)" [multiple]="true"  (onRemoved)="onRemoved($event)" (onAdded)="onAdded($event)" (onAction)="onAction($event)"></ng2-file-input>
+                        </div>
+                </div> -->
+                
+                
+                <!-- <div class="form-group row">
+                    <div class="offset-xl-4 col-xl-4">
+                    <div class="checkbox">
+                        <div _ngcontent-c5="" class="">
+                        <label _ngcontent-c5="" class="checkbox-inline custom-checkbox nowrap">
+                            <input _ngcontent-c5="" type="checkbox" value="undefined">
+                            <span _ngcontent-c5="">Remember me</span>
+                        </label>
+                        </div>
+                    </div>
+                    </div>
+                </div> -->
+        
+        </div> 
+        <div class="card-footer" *ngIf="!controlDisabled">
+            <div class="input-group pull-right">
+                
+                <button class="btn btn-command btn-footer btn-danger"
+                    (click)="onCancelCommand()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <span>{{ "cancelButton" | translate: "COMMON" }}</span>
+                </button>
+                <button class="btn btn-command btn-footer btn-success"
+                    (click)="onUpdateCommand()">
+                    <i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>
+                    <span>{{ "saveButton" | translate: "COMMON" }}</span>
+                </button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- start modal #myModal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content ">
+          <div class="modal-header">
+             
+              <h2 class="modal-title" align="center">History <small class="is_no_small"></small></h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+              
+          </div>
+          <div class="modal-body" >
+              <div class="container-fluid">
+              
+                <issue-detail-criteria [historyRaw]="HistoryData" [memberRaw]="HistoryMember"></issue-detail-criteria>
+        
+
+              </div><!-- end container fluid -->
+          </div> <!-- end modal body -->
+          </div>
+    </div>
+  </div>
+<!-- end modal #myModal -->
+
+<!-- start modal #myModal2 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content ">
+          <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel" align="center">Are you want to change status?</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body" >
+              <div class="container-fluid">
+              <div class="col-sm-8 offset-sm-2 ">
+                    <div bacardblur="" zoom-in="" class="animated fadeIn card  with-scroll">
+                        <div class="card-header" data-toggle="collapse" href="#report" aria-expanded="true" aria-controls="collapse1" align="center">
+                            <h4 class="card-title"  align="center">
+                                            <span >From :</span>
+                                            <span class="from_status"></span>
+                                            <i class="fa fa-arrow-right col-sm-1" aria-hidden="true"></i>
+                                            <span >To : </span>
+                                            <span class="to_status"></span>
+                                <span class="btn btn-icon pull-right ">
+                                    <i class="fa fa-chevron-down pull-right"></i></span>
+                            </h4>
+                            <small class="text-muted" align="center">Ref No : <span class="ref_no"></span></small>
+                        </div>
+                        
+                        <div class="card-block collapse in" aria-labelledby="heading-collapsed" id="report">
+                            <div class="card-block"  >
+                                    <div class="form-group row">
+                                        <label class="col-sm-2  col-sm-3 col-md-3 col-lg-3 form-control-label" for="inputEmail3" >Module</label>
+                                        <div class="col-sm-10  col-sm-5 col-md-7 col-lg-7">
+                                            <ctm-textarea class="form-control" rows="5" disabled id="is_module"></ctm-textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2  col-sm-3 col-md-3 col-lg-3 form-control-label" for="inputEmail3" >Description</label>
+                                        <div class="col-sm-10  col-sm-5 col-md-7 col-lg-7">
+                                            <ctm-textarea class="form-control" rows="5" disabled id="is_description"></ctm-textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2  col-sm-3 col-md-3 col-lg-3 form-control-label" for="inputEmail3" >Expect Result</label>
+                                        <div class="col-sm-10  col-sm-5 col-md-7 col-lg-7">
+                                            <ctm-textarea class="form-control" rows="5" disabled id="is_expect_result"></ctm-textarea>
+                                        </div>
+                                    </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="fix_rd_detail" [formGroup]="fix_rd_detail.form"><!-- start class fix_detail -->
+                    <div class='form-group row'>
+                        <label class='detail_label col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-4 offset-sm-3 offset-md-3 offset-lg-3 form-control-label align-rigth' for='inputPassword3' required>Remark</label>
+                        <div class='col-xl-4  col-sm-3 col-md-4 col-lg-4'>
+                        <ctm-textarea rows='5'
+                        formControlName="detail"
+                        [error]="fix_rd_detail.error('detail')"></ctm-textarea>
+                        </div>
+                    </div>
+                </div><!-- end class fix_detail -->
+                
+              </div><!-- end container fluid -->
+          </div> <!-- end modal body -->
+          <div class="modal-footer claerfix">
+                  <button type="button" class="btn btn-secondary  mr-auto" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="ClickSaveModal()">Save changes</button>
+          </div>
+          </div>
+    </div>
+  </div>
+<!-- end modal #myModal2 -->

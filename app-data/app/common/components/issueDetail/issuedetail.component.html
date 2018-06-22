@@ -1,0 +1,108 @@
+<div class="card-columns">
+    
+    <div class="card " *ngIf="history != null && history.open_date != null">
+        <div class="card-block">
+            <div class="card-title">
+                <h3 align="center" >Open</h3>
+            </div>
+            <div class="crad-text row">
+                <label class="col-4">Date :</label><label class="col-8">{{ history.open_date | date:'dd MMM yyyy'}}</label>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="from-group row" *ngIf="history != null"> -->
+
+    <div class="card " *ngIf="history != null && history.plan_date != null">
+        <div class="card-block">
+            <div class="card-title">
+                <h3 align="center">Plan</h3>
+            </div>
+            <div class="crad-text">
+                <div class="row">
+                    <label  class="col-4">Date :</label><label  class="col-8">{{ history.plan_date | date:'dd MMM yyyy'}}</label>
+                </div>
+                <div class="crad-text row">
+                    <div class="col-4"><label >By :</label></div>
+                    <div class="col-8"><label class="col-12"  style="padding-left: 0px;" *ngFor="let row of getMemberByStatus('Plan')">{{row.us_name}}</label></div>
+                </div>
+                <div class="crad-text row">
+                    <div class="col-4"><label >To :</label></div>
+                    <div class="col-8"><label class="col-12" style="padding-left: 0px;" *ngFor="let row of getMemberByStatus('Process')">{{row.us_name}}</label></div>
+                </div>
+                <div class="crad-text row">
+                    <label class="col-4 nowrap">Deadline : </label><label class="col-8">{{ history.deadline | date:'dd MMM yyyy'}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " *ngIf="history != null && history.process_date != null">    
+        <div class="card-block">
+            <div class="card-title">
+                <h3 align="center">Process</h3>
+            </div>
+            <div class="crad-text row">
+                <label class=" col-4">Date :</label><label class="col-8">{{ history.process_date | date:'dd MMM yyyy'}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " *ngIf="history != null && history.fix_date != null">    
+        <div class="card-block">
+            <div class="card-title">
+                <h3 align="center">Fix</h3>
+            </div>
+            <div class="crad-text row">
+                <label class=" col-4">Date :</label><label class="col-8">{{ history.fix_date | date:'dd MMM yyyy'}}</label>
+            </div>
+            <div class="crad-text row">
+                <label class=" col-4">Action :</label><label class="col-8">{{history.fix_action}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " *ngIf="history != null && history.check_date != null">
+        <div class="card-block">
+            <div class="card-title">
+                <h3 align="center">Check</h3>
+            </div>
+            <div class="crad-text row">
+                <label class=" col-4 ">Date :</label><label class="col-8" >{{history.check_date | date:'dd MMM yyyy'}}</label>
+            </div>
+            <div class="crad-text row">
+                <div class="col-4"><label >By :</label></div>
+                <div class="col-8"><label class="col-12" style="padding-left: 0px;" *ngFor="let row of getMemberByStatus('Check')">{{row.us_name}}</label></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " *ngIf="history != null && history.close_date != null">    
+        <div class="card-block">
+            <div class="card-title">
+                <h3 align="center">Close</h3>
+            </div>
+            <div class="crad-text row">
+                <label class=" col-4">Date :</label><label class="col-8">{{history.close_date | date:'dd MMM yyyy'}}</label>
+            </div>
+            <div class="crad-text row">
+                <div class="col-4"><label >By :</label></div>
+                <div  class="col-8"><label class="col-12" style="padding-left: 0px;" *ngFor="let row of getMemberByStatus('Close')">{{row.us_name}}</label></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card " *ngIf="history != null && history.status != null && (history.status == 'Miss' ||history.status == 'Cancel' ||history.status == 'Re-debug' )">    
+        <div class="card-block">
+            <div class="card-title">
+                <h3 align="center">{{history.status}}</h3>
+            </div>
+            <div class="crad-text row">
+            <label class=" col-4">Date :</label><label class="col-8">{{ history.acident_date | date:'dd MMM yyyy'}}</label>
+            </div>
+            <div class="crad-text row">
+            <label class=" col-4">Remark :</label><label class="col-8">{{history.remark}}</label>
+            </div>
+        </div>
+    </div>
+
+</div>

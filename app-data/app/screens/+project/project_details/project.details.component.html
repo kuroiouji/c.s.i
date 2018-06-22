@@ -1,0 +1,283 @@
+﻿<ctm-screen-command></ctm-screen-command>
+<div class="container-fluid container">
+    <div bacardblur="" zoom-in="" class="animated fadeIn card-deck with-scroll">
+        <!-- Card project  -->
+        <div class="card col-xl-8" style="padding:0%" [formGroup]="ctrlMgr.form">
+            <div class="card-header ">
+                <h2 class="card-title" translate="" align="left">{{"ProjectDetail"|translate:"PROJECT"}}
+                    <div class="pull-right">
+                            <button class="btn btn-c btn-default " data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                            <span>{{"ImportProject"|translate:"PROJECT"}}</span>
+                            </button>
+                    </div></h2>
+            </div>
+            <div class="card-block">
+                    <div class="form-group row"> 
+                            <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label " for="inputEmail3"  >{{"ProjectCode"|translate:"PROJECT"}}</label>
+                            <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                            <ctm-textbox type="ProjectName" formControlName="pj_project_code" [error]="ctrlMgr.error('pj_project_code')"></ctm-textbox>
+                            </div>
+                        </div>
+                    <div class="form-group row">
+                        <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputEmail3" >{{"ProjectName"|translate:"PROJECT"}}</label>
+                        <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                        <ctm-textbox placeholder="ProjectName" type="ProjectName" formControlName="pj_name" [error]="ctrlMgr.error('pj_name')"></ctm-textbox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputEmail3" >{{"Description"|translate:"PROJECT"}}</label>
+                        <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                            <textarea class="form-control" rows="5" formControlName="pj_description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3 " >{{"Owner"|translate:"PROJECT"}}</label>
+                        <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7">
+                        <md2-autocomplete (change)="onDeleteMember()"   
+                                            autocomplete-key="AllUser"
+                                            formControlName="us_id"
+                                            [error]="ctrlMgr.error('us_id')"></md2-autocomplete>
+                                            <!-- into md2-autocomplete  -->
+                                            <!-- [error]="ctrlMgr.error('FlagActive')" -->
+                        </div>
+                    </div>
+                    <div class="form-group row" *ngIf="this.commandCtrl.editCommandDisabled">
+                        <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3 " >{{"Phase"|translate:"PROJECT"}}</label>
+                        <div class="col-xl-6  col-sm-5 col-md-7 col-lg-7 card-deck " >
+                            <div class="card col-xl-6" >
+                                <label class="card-title" align="center" >{{"PhaseOption"|translate:"PROJECT"}}</label>
+                                <div class='card-block anyClass ' [dragula]='"another-bag"' [dragulaModel]='PhaseOption' >
+                                    <div class="btn-danger" align="center" style="margin: 1px;border-radius: 12px" *ngFor='let text of PhaseOption' [innerHtml]='text.ph_name'></div>
+                                </div>
+                            </div>
+                            <div class="card col-xl-6">
+                                <label class="card-title" align="center">{{"PhaseSelected"|translate:"PROJECT"}}</label>
+                                <div class='card-block anyClass'  [dragula]='"another-bag"' [dragulaModel]='PhaseSelected'>
+                                    <div class="btn-primary" align="center" style="margin: 1px;border-radius: 12px" *ngFor='let text of PhaseSelected' [innerHtml]='text.ph_name'></div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3 " >{{"ProjectStatus"|translate:"PROJECT"}}</label>
+                        <div class="col-xl-3  col-sm-5 col-md-7 col-lg-7">
+                    <md2-autocomplete autocomplete-key="ProjectStatus"
+                                            formControlName="pjs_id"
+                                            [error]="ctrlMgr.error('pjs_id')"></md2-autocomplete>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3" >{{"ProjectPeriod"|translate:"PROJECT"}}</label>
+                        <div class="col-xl-4  col-sm-5 col-md-4 col-lg-4">
+                        <md2-datepicker formControlName="pj_end_date" 
+                                        [error]="ctrlMgr.error('pj_end_date')"
+                                        locale="th" role="datepicker" 
+                                        class="ng-tns-c4-1 ng-untouched ng-pristine ng-valid" 
+                                        aria-required="false" 
+                                        aria-disabled="false" 
+                                        aria-invalid="false">
+                            <div class="input-group ctm-md2-datepicker">
+                                <input class="form-control" 
+                                        autocomplete="off" 
+                                        tooltip-position="above" type="text" tabindex="0">
+                                <span class="input-group-btn ctm-md2-datepicker-button">
+                                    <button class="btn" tabindex="-1" type="button">
+                                        <svg height="24" viewBox="0 0 24 24" width="24" class="ng-tns-c4-1">>
+                                        <path class="ng-tns-c4-1" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path>
+                                    </svg>
+                                    </button>
+                                </span>  
+                            </div></md2-datepicker>
+                        </div>
+                    </div>
+                    
+                 <!-- <div class="form-group row">
+                    <label class="col-xl-2  col-sm-3 col-md-3 col-lg-3 offset-xl-2 offset-sm-1 offset-md-1 offset-lg-1 form-control-label" for="inputPassword3" required>Project Period</label>
+                    <div class="col-xl-4  col-sm-5 col-md-4 col-lg-4">
+                            <div class="input-group" daterangepicker (selected)="selectedDate($event, mainInput)" *ngFor="let p of ctrlMgr">
+                                <span class="form-control uneditable-input"  name="daterange">
+                                    {{ p.pj_start_date | date:'dd MMM yyyy' }} - {{ p.pj_end_date | date:'dd MMM yyyy' }}
+                                </span>
+                                <span class="input-group-btn">
+                                    <a type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+                                </span>
+                            </div>
+                    </div>
+                </div>  -->   
+            </div> 
+        </div>
+        <!-- Card member  -->
+         <div class="card col-xl-4" style="padding:0%" [formGroup]="ctrlMgr.form">
+            <div class="card-header ">
+                <h2 class="card-title" translate="" align="left">{{"ProjectMember"|translate:"PROJECT"}}
+                    <div class="pull-right">
+                            <button  class="btn btn-c btn-default " data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                            <span>{{"AddProjectMember"|translate:"PROJECT"}}</span>
+                            </button>
+                    </div> 
+                    </h2>
+            </div>
+            <div class="card-block">
+                <div class="row col-12 no-gutters form-inline row-user-add"
+                    [formGroup]="MemberCtrlMgr.form">
+                    <md2-autocomplete 
+                                formControlName="us_id"  
+                                autocomplete-key="AllUser"
+                                autocomplete-placeholder="ALL">
+                    </md2-autocomplete>
+                    <button type="button" 
+                            class="btn btn-primary btn-add-user"
+                            (click)="onAddMember()"
+                            [disabled]="!this.commandCtrl.editCommandDisabled"
+                            *ngIf="!this.commandCtrl.updateCommandDisabled">
+                        <i class="ion-plus">&nbsp;{{"addButton"| translate:"COMMON"}}</i>
+                    </button>
+                </div>
+                 <table>
+                    <tbody>
+                        <tr class="tr" *ngFor="let row of memberPermissions"> 
+                            <td class="table-col-number" style="width:35px;text-align:center">{{ row.number }}</td>
+                            <td class="table-col-delete a " style="width:35px;text-align:center" 
+                                (click)="onDeleteMember(row.pjm_us_id)"
+                                *ngIf="!controlDisabled" > 
+                                <a>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>                 
+                            </td>
+                            <td class="">{{ row.FullName }}</td>
+                        </tr>
+                    </tbody>    
+                </table> 
+            </div>
+        </div>  
+       
+    </div>
+
+
+<!-- -------------------------------END PROJECT DETAIL------------------------------------------ -->
+<div class="row group-screen">
+    <div class="col-12">
+        <h4 class="group-header">{{"permissionHeader" | translate: "SCS011" }}</h4>
+        <div class="horizontal-scroll table-fixed-header table-permission-header"
+            *ngIf="fixedPermissionHeader">
+            <table class="table table-fixed table-bordered table-group-permission">
+            </table>
+        </div>
+        <div class="horizontal-scroll table-permission-main">
+            <table class="table table-fixed table-bordered table-group-permission">
+                <colgroup ctm-table-columns>
+                    <col style="width:250px">
+                    <!--<col class="table-col-permission" *ngFor="let p of permissions">-->
+                </colgroup>
+                <thead ctm-table-header>
+                    <tr class="black-muted-bg">
+                        <th class="align-center" rowspan="3">{{ NameSurname | translate: "PROJECT"}}</th>
+                        <th class="align-center" [colSpan]="permissionsProject.length">{{ "PermissionProject" | translate: "PROJECT" }}</th>
+                        <th class="align-center" [colSpan]="permissionsIssue.length">{{ "PermissionIssue"| translate: "PROJECT" }}</th>
+                        <!--<th class="align-center" style="width:260px" rowspan="3">เข้าร่วม</th>-->
+                    </tr>
+
+                    <tr class="black-muted-bg">
+                        <th class="align-center" *ngFor="let p of permissionsProject">{{ p.propROL | translate: "PROJECT" }}</th>
+                        <th class="align-center" *ngFor="let p of permissionsIssue">{{ p.propROL | translate: "PROJECT" }}</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<ng-container *ngFor="let grp of permissions">-->
+                        <!--<tr *ngIf="groupName(grp)" class="row-group">
+                            <td [colSpan]="permissionsProject.length + permissionsIssue.length + 1" class="table-col-group">
+                                <i [ngClass]="grp.GroupImageIcon"></i>
+                                <span>{{ groupName(grp) }}</span>
+                            </td>
+                        </tr>-->
+                        <tr *ngFor="let row of memberPermissions">
+                            <!--[ngClass]="{ 'row-child-group': groupName(grp) }">-->
+                            <td class="table-col-screen">
+                                <!--[ngClass]="{ 'child-screen': scn.ParentScreenID }">
+                                <i [ngClass]="scn.ImageIcon"></i>-->
+                                <span>{{ row.FullName }}</span>
+                            </td>
+                            <td *ngFor="let p of permissionsProject" class="align-center">
+                                <label class="custom-control custom-checkbox"
+                                    [ngClass]="{ 'disabled': !this.commandCtrl.editCommandDisabled }">
+                                    <input type="checkbox" class="custom-control-input"
+                                            [disabled]="!this.commandCtrl.editCommandDisabled"
+                                            [(ngModel)]="row[p.propROL]">
+                                    <span class="custom-control-indicator"></span>
+                                </label> 
+                                <!-- label old
+                                <label *ngIf="scn[p.propSCN]" 
+                                    class="custom-control custom-checkbox"
+                                    [ngClass]="{ 'disabled': scn.ScreenID=='CMS020' || controlDisabled }"> 
+                                    <input type="checkbox" class="custom-control-input"
+                                           [disabled]="scn.ScreenID=='CMS020' || controlDisabled"
+                                           [(ngModel)]="scn[p.propROL]"
+                                           (change)="onPermissionChange(scn, p)">
+                                        <span class="custom-control-indicator"></span>
+                                </label> -->
+                            </td>
+                            <td *ngFor="let p of permissionsIssue" class="align-center">
+                                <label class="custom-control custom-checkbox"
+                                    [ngClass]="{ 'disabled': !this.commandCtrl.editCommandDisabled }">
+                                    <input type="checkbox" class="custom-control-input"
+                                           [disabled]="!this.commandCtrl.editCommandDisabled"
+                                           [(ngModel)]="row[p.propROL]">
+                                    <span class="custom-control-indicator"></span>
+                                </label>
+                                <!-- label old
+                                <label *ngIf="scn[p.propSCN]" 
+                                    class="custom-control custom-checkbox"
+                                    [ngClass]="{ 'disabled': scn.ScreenID=='CMS020' || controlDisabled }"> 
+                                    <input type="checkbox" class="custom-control-input"
+                                           [disabled]="scn.ScreenID=='CMS020' || controlDisabled"
+                                           [(ngModel)]="scn[p.propROL]"
+                                           (change)="onPermissionChange(scn, p)">
+                                    <span class="custom-control-indicator"></span>
+                                </label>-->
+                            </td>
+                            <!--<td>
+                                <div class="input-group" daterangepicker (selected)="selectedDate($event, mainInput)">
+                                    <span class="form-control uneditable-input"  name="daterange" >
+                                        {{ row.pjm_start_date | date:'dd/M/yy' }} - {{ row.pjm_end_date| date:'dd/M/yy' }}
+                                    </span>
+                                    <span class="input-group-btn">
+                                        <a type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+                                    </span>
+                                </div>
+                            </td>-->
+                        </tr>
+                    <!--</ng-container>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- start modal #myModal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content ">
+              <div class="modal-header">
+                  <h2 class="modal-title" id="exampleModalLabel" align="center">{{"comingsoon"|translate:"PROJECT"}}</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body" >
+                  <div class="container-fluid"><h2>{{"comingsoon"|translate:"PROJECT"}}</h2>
+            
+
+                  </div><!-- end container fluid -->
+              </div> <!-- end modal body -->
+              <div class="modal-footer claerfix">
+                      <button type="button" class="btn btn-secondary  mr-auto" data-dismiss="modal">{{"closeButton"|translate:"COMMON"}}</button>
+                      <button type="button" class="btn btn-primary " >{{"saveButton"|translate:"COMMON"}}</button>
+              </div>
+              </div>
+        </div>
+      </div>
+<!-- end modal #myModal -->

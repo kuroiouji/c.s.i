@@ -1,0 +1,40 @@
+<aside class="al-sidebar" (mouseleave)="hoverElemTop=outOfArea" sidebarResize>
+  <ul id="al-sidebar-list" class="al-sidebar-list" baSlimScroll [baSlimScrollOptions]="{height: menuHeight}">
+    <!-- <ba-menu-item
+      [menuItem]="item"
+      (itemHover)="hoverItem($event)"
+      (toggleSubMenu)="toggleSubMenu($event)"
+      *ngFor="let item of menuItems"></ba-menu-item> -->
+      
+      <li  [title]="" 
+          class="al-sidebar-list-item ba-sidebar-sublist-item selected ba-sidebar-item-expanded">
+        <a 
+            class="al-sidebar-list-link"
+            (click)="clickissue()">
+          <i class="fa fa-pencil-square-o " aria-hidden="true"></i><span>Create Issue</span>
+        </a>
+            
+      </li>
+      <li  [title]="" 
+      class="al-sidebar-list-item ba-sidebar-sublist-item selected ba-sidebar-item-expanded">
+        <a 
+            class="al-sidebar-list-link"
+            (click)="clickproject()">
+            <i class="fa fa-desktop" aria-hidden="true"></i><span>Project</span>
+        </a>
+            
+      </li>
+      <li  [title]="" 
+      class="al-sidebar-list-item ba-sidebar-sublist-item selected ba-sidebar-item-expanded">
+        <a 
+            class="al-sidebar-list-link"
+            (click)="clickreport()">
+            <i class="fa fa-line-chart" aria-hidden="true"></i><span>Report</span>
+        </a>
+            
+      </li>
+  
+  </ul>
+  <div class="sidebar-hover-elem" [ngStyle]="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}"
+       [ngClass]="{'show-hover-elem': showHoverElem }"></div>
+</aside>

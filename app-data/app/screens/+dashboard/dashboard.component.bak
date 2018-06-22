@@ -1,0 +1,97 @@
+﻿<div class="col-xl-8 offset-xl-2 ">
+    <div bacardblur="" zoom-in="" class="animated fadeIn card  with-scroll">
+        <div class="card-header" data-toggle="collapse" href="#report" aria-expanded="true" aria-controls="collapse1" >
+            <h2 class="card-title"  >
+                <span >Report</span>
+                <span class="btn btn-icon pull-right ">
+                    <i class="fa fa-chevron-down pull-right"></i></span>
+            </h2>
+        </div>
+        
+        <div class="card-block collapse show" aria-labelledby="heading-collapsed" id="report">
+            <div class="card-block" align="center">
+                <chart [options]="options" ></chart><!-- highchart-->
+                    
+            </div> 
+        </div>
+    </div>
+</div>
+
+    
+<div class="card " *ngFor="let row of project_data">
+    <div class="card-header" data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+        <h2 class="card-title"  >
+            <span>{{row.pj_project_code}} ({{row.pj_name}})</span>
+            <span class="btn btn-icon pull-right ">
+                <i class="fa fa-chevron-down pull-right"></i></span>
+        </h2>
+    </div>
+
+    <div class="card-block collapse show" aria-labelledby="heading-collapsed" id="collapse1">
+        
+    <!-- start block issue status -->
+        <div class="card-deck " (click)="warp()">
+            <div bacardblur="" zoom-in="" class="card col-xl-2" align="center">
+                <div class="card-block">
+                    <div class="card-title">
+                        <h4 align="left">Open</h4>
+                    </div>
+                    <h1>{{row.Open}}</h1>
+                </div> 
+            </div>
+            <div bacardblur="" zoom-in="" class="card col-xl-2" align="center">
+                <div class="card-block">
+                    <div class="card-title">
+                        <h4 align="left">Plan</h4>
+                    </div>
+                    <h1>{{row.Plan}}</h1>
+                </div> 
+            </div>
+            <div bacardblur="" zoom-in="" class="card col-xl-2" align="center">
+                <div class="card-block">
+                    <div class="card-title">
+                        <h4 align="left">Process</h4>
+                    </div>
+                    <h1>{{row.Process}}</h1>
+                </div> 
+            </div>
+            <div bacardblur="" zoom-in="" class="card col-xl-2" align="center">
+                <div class="card-block">
+                    <div class="card-title">
+                        <h4 align="left">Fix</h4>
+                    </div>
+                    <h1>{{row.Fix}}</h1>
+                </div> 
+            </div>
+            <div bacardblur="" zoom-in="" class="card col-xl-2" align="center">
+                <div class="card-block">
+                    <div class="card-title">
+                        <h4 align="left">Check</h4>
+                    </div>
+                    <h1>{{row.Check}}</h1>
+                </div> 
+            </div>
+            <div bacardblur="" zoom-in="" class="card col-xl-2" align="center">
+                <div class="card-block">
+                    <div class="card-title">
+                        <h4 align="left">Close</h4>
+                    </div>
+                    <h1>{{row.Close}}</h1>
+                </div> 
+            </div>
+        </div>
+        <!-- end block issue status -->
+        <!-- start activity block -->
+        <div class="card offset-xl-1 col-xl-10">
+            <div class="card-block">
+                <h4 class="card-title">Project activity</h4>
+                    <p class="card-text">ศิวะนนท์ ขมเจริญ สร้าง Issue หัวข้อ "header บางส่วนสีไม่ตรงกัน"</p>
+                    <p class="card-text">ศิวะนนท์ ขมเจริญ สร้าง Issue หัวข้อ "การบันทึกข้อมูลวันที่ แสดงผล ผิด"</p>
+                    <p class="card-text">ศิวะนนท์ ขมเจริญ สร้าง Issue หัวข้อ "ล็อกอินยูสเซอร์ไม่ใช่ของตัวเอง"</p>
+            </div>
+        </div>
+        <!-- end activity block -->
+
+    </div>
+</div>
+

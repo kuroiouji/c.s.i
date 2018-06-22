@@ -1,0 +1,94 @@
+﻿<ctm-search-criteria  
+[formGroup]="criteriaCtrlMgr.form"
+[use-search-command]="true"
+[use-clear-command]="true"
+(search-command)="onSearch()"
+(clear-command)="onClearSearch()">
+<div class="row">
+    <div class="col-sm-8 col-md-6 col-lg-5 col-xl-3 form-group">
+        <label class="form-control-label">Project Name / Project Owner</label>
+        <ctm-textbox formControlName="PjNameOwner" (keyup)= "onSearch()"></ctm-textbox>
+    </div>
+</div>
+</ctm-search-criteria>
+
+<div class="container-fluid">
+<div class="card">
+<div class="card-block">
+    <div class="card-title">
+        <div class="row">
+            <div class="col-xl-12">
+                <h1>Project
+                <button  (click)="NewProject()" class="btn btn-c btn-primary pull-right" *ngIf="isHasCreate()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <span>Create Project</span>
+                </button>
+                </h1>
+            </div>
+        </div>
+    </div>
+        
+        <table class="table table-user table-bordered  table-bordered table-hover table-striped"> 
+            <!-- <colgroup ctm-table-columns>
+                <col class="table-col-number">
+                <col class="table-col-delete">
+                <col class="table-col-group-id">
+                <col class="table-col-group-name">
+                <col class="table-col-description">
+                <col class="table-col-flag">
+            </colgroup>  -->
+            <thead >
+                <tr class="black-muted-bg " >
+                    <th class="table-col-No align-center" >No.</th>            
+                    <th class="table-col-project-name align-center ">Project Name</th>
+                    <th class="table-col-owner-name align-center ">Owner Name</th>
+                    <th class="align-center" style="width:100px">Status</th>
+                    <th class="table-col-action align-center ">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of resultData"> 
+                    <td class="align-center">{{ row.number }}</td>
+                    <td class="align-left "><span class="no-wrap">{{ row.pj_name }}</span></td> 
+                     <td class="align-left " ><span class="no-wrap">{{ row.FullName }}</span>
+                    </td>
+                     <td>
+                        <b *ngIf="row.pjs_name=='Active'" style="color:Green" >
+                            <span class="no-wrap">{{ row.pjs_name }}</span>
+                        </b>
+                        <b *ngIf="row.pjs_name=='Close'" style="color:#e60000">
+                            <span class="no-wrap">{{ row.pjs_name }}</span>
+                        </b>
+                        <b *ngIf="row.pjs_name=='Open'" style="color:#ccccb3">
+                            <span class="no-wrap">{{ row.pjs_name }}</span>
+                        </b>
+                     </td>    
+                    <!-- <td class="align-center" > -->
+
+                    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+                    <!-- <button class="btn btn-c btn-footer btn-danger">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <span>{{ "cancelButton" | translate: "COMMON" }}</span>
+                    </button>
+                    <button class="btn btn-footer btn-success">
+                        <i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>
+                        <span>{{ "saveButton" | translate: "COMMON" }}</span>
+                    </button> -->
+                    <td class="align-left">
+                        <button (click)="ClickIssue(row)" class="btn btn-command btn-primary align-center">
+                            <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                            <span>View</span></button>
+                        <button (click)="ClickDetail(row)" class="btn btn-command btn-warning">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <span>Details</span></button>
+                        <button (click)="ClickReport(row)" class="btn btn-command btn-success">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                            <span>Report</span></button>
+                    </td> 
+                </tr>
+            </tbody>    
+        </table> 
+    </div>
+</div>
+</div>
+

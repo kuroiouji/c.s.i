@@ -1,0 +1,70 @@
+﻿<div class="card ">
+    <div class="card-title">
+            <div class="form-group row" >
+                    <label class="col-xl-2  offset-xl-4 form-control-label" for="inputEmail3">Project Name</label>
+                    <div class="col-xl-3  offset-xl-4" [formGroup]="ctrlMgr.form">
+                        <md2-autocomplete autocomplete-key="ProjectAll"
+                        autocomplete-placeholder="ALL"
+                        formControlName="pj_id"
+                        (change)="ProjectChange()"></md2-autocomplete>
+                    </div>
+                </div>
+    </div>
+    <div class="card-block row">
+<div class="col-xl-6" align="center">
+    <div bacardblur="" zoom-in="" class="animated fadeIn card  with-scroll">
+        <div class="card-header" data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+            <span class="btn btn-icon pull-right ">
+                <i class="fa fa-chevron-down pull-right"></i></span>
+    </div>
+
+    <div class="card-block collapse show col-xl-12" aria-labelledby="heading-collapsed" id="collapse1">
+            <chart [options]="options"></chart><!-- highchart-->
+                
+        </div> 
+    </div>
+</div>
+
+
+<div class="col-xl-6" align="center">
+        <div bacardblur="" zoom-in="" class="animated fadeIn card  with-scroll">
+            <div class="card-header" data-toggle="collapse" href="#collapse3" aria-expanded="true" aria-controls="collapse1">
+                    <span class="btn btn-icon pull-right ">
+                        <i class="fa fa-chevron-down pull-right"></i></span>
+            </div>
+        
+            <div class="card-block collapse show" aria-labelledby="heading-collapsed" id="collapse3">
+                <chart [options]="option3"></chart><!-- highchart-->
+                    
+            </div> 
+        </div>
+    </div>
+
+    <div class="col-xl-6" align="center">
+        <div bacardblur="" zoom-in="" class="animated fadeIn card  with-scroll">
+            <div class="card-header" data-toggle="collapse" href="#collapse4" aria-expanded="true" aria-controls="collapse1">
+                    <span class="btn btn-icon pull-right ">
+                        <i class="fa fa-chevron-down pull-right"></i></span>
+            </div>
+        
+            <div class="card-block collapse show" aria-labelledby="heading-collapsed" id="collapse4">
+                <chart [options]="option5 "></chart><!-- highchart-->
+                    
+            </div> 
+        </div>
+    </div>
+    <div class="col-xl-6" align="center">
+            <div bacardblur="" zoom-in="" class="animated fadeIn card  with-scroll">
+                <div class="card-header" data-toggle="collapse" href="#collapse5" aria-expanded="true" aria-controls="collapse1">
+                        <span class="btn btn-icon pull-right ">
+                            <i class="fa fa-chevron-down pull-right"></i></span>
+                </div>
+            
+                <div class="card-block collapse show" aria-labelledby="heading-collapsed" id="collapse5">
+                    <chart [options]="option4 "></chart><!-- highchart-->
+                        
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
